@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/static/css/registration.css">
+</head>
+<body>
+<div class="container">
+    <h2>Регистрация</h2>
+    <form action="{% url 'loginApp:register' %}" method="post">
+        {% csrf_token %}
+        <label for="first_name">Имя</label>
+        {{ form.first_name }}
+        <label for="last_name">Фамилия</label>
+        {{ form.last_name }}
+        <label for="username">Имя пользователя</label>
+        {{ form.username }}
+        <label for="email">Электронная почта</label>
+        {{ form.email }}
+        <label for="password1">Пароль</label>
+        {{ form.password1 }}
+        <label for="password2">Подтверждение пароля</label>
+        {{ form.password2 }}
+
+        <button type="submit">Регистрироваться</button>
+
+    </form>
+    <p>Есть учётная запись? <a href="{% url 'loginApp:login' %}">Авторизоваться</a></p>
+</div>
+</body>
+</html>

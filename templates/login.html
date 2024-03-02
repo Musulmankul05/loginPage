@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+</head>
+<body>
+<div class="login-container">
+    <h2>Авторизация</h2>
+    <form action="{% url "loginApp:login" %}" method="post">
+        {% csrf_token %}
+        <label for="username">Имя пользователя</label>
+        {{ form.username }}
+
+        <label for="password">Пароль</label>
+        {{ form.password }}
+
+        <button type="submit">Авторизоваться</button>
+    </form>
+    <p>Нет учётной записи? <a href="{% url 'loginApp:register' %}">Регистрируйтесь</a></p>
+</div>
+</body>
+</html>

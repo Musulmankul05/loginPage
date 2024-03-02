@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Домашняя страница</title>
+    <link rel="stylesheet" href="{% static '/css/index.css' %}"/>
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+</head>
+<body>
+<div class="welcome-container">
+    <i class="material-icons" style="
+      font-size: 140px;
+      color: #11272a6a;
+      margin-bottom: 20px;
+      ">person</i>
+    {% if user.is_authenticated %}
+        <p class="user-name">Привет, {{ user.username }}</p>
+        <a href="{% url 'loginApp:logout' %}" class="login-button">Выйти</a>
+    {% else %}
+        <h1>Добро пожаловать!</h1>
+        <a href="{% url 'loginApp:login' %}" class="login-button">Авторизоваться</a>
+    {% endif %}
+</div>
+</body>
+</html>
